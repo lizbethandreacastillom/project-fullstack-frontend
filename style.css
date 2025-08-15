@@ -1,2 +1,428 @@
-body { background:#f8f9fa; font-family:Arial, sans-serif; }
-pre { background:#fff; padding:10px; border-radius:6px; }
+/* Variables CSS */
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #0dcaf0;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --border-radius: 0.375rem;
+  --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --transition: all 0.3s ease;
+}
+
+/* Estilos generales */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar personalizado */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(13, 110, 253, 0.95) !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cards con efectos */
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  font-weight: 600;
+}
+
+/* Botones personalizados */
+.btn {
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: var(--transition);
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary-color), #0056b3);
+}
+
+.btn-success {
+  background: linear-gradient(45deg, var(--success-color), #146c43);
+}
+
+.btn-danger {
+  background: linear-gradient(45deg, var(--danger-color), #b02a37);
+}
+
+.btn-info {
+  background: linear-gradient(45deg, var(--info-color), #0aa2c0);
+}
+
+.btn-warning {
+  background: linear-gradient(45deg, var(--warning-color), #e0a800);
+}
+
+/* Tabla personalizada */
+.table {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.table thead th {
+  background: linear-gradient(45deg, var(--dark-color), #495057);
+  color: white;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  transition: var(--transition);
+}
+
+.table tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05);
+  transform: scale(1.01);
+}
+
+/* Badges personalizados */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+/* Formularios */
+.form-control, .form-select {
+  border-radius: var(--border-radius);
+  border: 2px solid #e9ecef;
+  transition: var(--transition);
+  padding: 0.75rem 1rem;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.input-group-text {
+  background: linear-gradient(45deg, var(--light-color), #e9ecef);
+  border: 2px solid #e9ecef;
+  border-right: none;
+  font-weight: 500;
+}
+
+/* Modal personalizado */
+.modal-content {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+.modal-header {
+  background: linear-gradient(45deg, var(--primary-color), #0056b3);
+  color: white;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+
+/* Alertas personalizadas */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+}
+
+.alert-success {
+  background: linear-gradient(45deg, #d1e7dd, #badbcc);
+  color: #0f5132;
+}
+
+.alert-danger {
+  background: linear-gradient(45deg, #f8d7da, #f5c2c7);
+  color: #842029;
+}
+
+.alert-warning {
+  background: linear-gradient(45deg, #fff3cd, #ffeaa7);
+  color: #664d03;
+}
+
+.alert-info {
+  background: linear-gradient(45deg, #cff4fc, #b6effb);
+  color: #055160;
+}
+
+/* Loading spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Aplicar animaciones */
+.card {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.table tbody tr {
+  animation: slideIn 0.5s ease-out;
+}
+
+.btn:hover {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+  
+  .btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+
+/* Estilos específicos para la aplicación */
+#auth-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+#app-section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Estilos para las tarjetas de Pokémon */
+#pokemonResult .card {
+  transition: var(--transition);
+}
+
+#pokemonResult .card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+#pokemonResult img {
+  transition: var(--transition);
+}
+
+#pokemonResult .card:hover img {
+  transform: scale(1.1);
+}
+
+/* Estilos para el clima */
+#weatherResult .card {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+}
+
+#weatherResult .card-title {
+  color: white;
+  font-weight: 600;
+}
+
+/* Estilos para el formulario de libro */
+#bookForm .form-label {
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos para los mensajes de usuario */
+#userDisplay {
+  color: white;
+  font-weight: 500;
+}
+
+/* Estilos para el código ISBN */
+code {
+  background: rgba(13, 110, 253, 0.1);
+  color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Estilos para el pre (resultados JSON) */
+pre {
+  background: var(--light-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #dee2e6;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  max-height: 400px;
+}
+
+/* Efectos de hover para botones de acción */
+.btn-sm {
+  transition: var(--transition);
+}
+
+.btn-sm:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos para el estado de carga */
+#loadingSpinner {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  padding: 2rem;
+}
+
+/* Estilos para las alertas flotantes */
+.alert.position-fixed {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Estilos para el modal de libro */
+#bookModal .modal-dialog {
+  max-width: 800px;
+}
+
+#bookModal .form-control,
+#bookModal .form-select {
+  font-size: 0.95rem;
+}
+
+/* Estilos para la tabla de libros */
+#booksTable tbody tr td {
+  vertical-align: middle;
+  padding: 0.75rem;
+}
+
+#booksTable tbody tr td:first-child {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Estilos para los badges de stock */
+.badge.bg-success {
+  background: linear-gradient(45deg, var(--success-color), #146c43) !important;
+}
+
+.badge.bg-warning {
+  background: linear-gradient(45deg, var(--warning-color), #e0a800) !important;
+  color: var(--dark-color) !important;
+}
+
+.badge.bg-danger {
+  background: linear-gradient(45deg, var(--danger-color), #b02a37) !important;
+}
+
+.badge.bg-info {
+  background: linear-gradient(45deg, var(--info-color), #0aa2c0) !important;
+}
+
+/* Estilos para el footer implícito */
+body::after {
+  content: '';
+  display: block;
+  height: 2rem;
+}
+
+/* Estilos para mejorar la accesibilidad */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Estilos para dispositivos de alta resolución */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+}
